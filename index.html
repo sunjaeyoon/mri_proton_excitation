@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRI Proton Excitation</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+            overscroll-behavior: none;
+        }
+        #container{
+            width: 50vw;
+            height: 100vh;
+        }
+        
+        #gui { 
+          position: absolute; 
+          top: 2px; 
+          left: 2px 
+        }
+
+        canvas{
+            display: block;
+        }
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-child {
+            flex: 1;
+        } 
+    </style>
+  </head>
+  <body>
+    <div class="flex-container">
+
+      <div class="flex-child magenta">
+        <div id="container">
+          <canvas id="bg"></canvas> 
+        </div>
+      </div>
+      
+      <div class="flex-child green">
+        
+          <canvas id='DemoCanvas'></canvas>
+        
+      </div>
+      
+    </div>
+    <div id="tester"></div>
+    
+    
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" ></script>
+    -->
+    <script type="module" src="./src/app.js"></script>
+  
+  </body>
+</html>

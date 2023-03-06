@@ -44,6 +44,7 @@ export default class Sketch {
         this.T1 = 1000;
         this.T2 = 100;
         this.wave_dilation = 10;
+        this.rot_frame = false;
         // Orbit Controls
         this.controls = new OrbitControls(this.camera, this.renderer.domElement)
         this.createGUI();
@@ -80,6 +81,15 @@ export default class Sketch {
     animate = () => {
         //console.log(this.arrows.dir);
         //console.log(this.arrows.position)
+        if(this.rot_frame == true){
+            let x = this.camera.position.x;
+            let z = this.camera.position.z;
+            //this.camera.position.x = x * Math.cos(this.time/this.wave_dilation) + z * Math.sin(this.time/this.wave_dilation);
+            //this.camera.position.z = z * Math.cos(this.time/this.wave_dilation) - x * Math.sin(this.time/this.wave_dilation);
+            //this.camera.lookAt(this.scene.position);
+            this.gridHelper.rotation.y += this.time/this.wave_dilation;
+            this.axesHelper.rotation.y += this.time/this.wave_dilation;
+        }
         let sum_x = 0;
         let sum_y = 0;
         let sum_z = 0;
@@ -358,7 +368,8 @@ export default class Sketch {
         this.gui.add(this, 'TE', 0, 1000,20).name('Time Echo').listen()
         this.gui.add(this, 'T1', 0, 5000,20).name('T1').listen()
         this.gui.add(this, 'T2', 0, 5000,20).name('T2').listen()
-        this.gui.add(this, 'wave_dilation', 0, 5,0.5).name('Oscillation').listen()
+        this.gui.add(this, 'wave_dilation', 0, 500,0.5).name('Oscillation').listen()
+        this.gui.add(this, 'rot_frame').name('Rotation Frame').listen()
 
     }
 
